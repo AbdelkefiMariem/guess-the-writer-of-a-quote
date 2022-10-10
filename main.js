@@ -1,15 +1,15 @@
 var score=0,counter=0
-//Object Array to hold quotes and there writer
+//Object Array to hold quotes, writer and there image
 var quotes = [{quote:"The unexamined life is not worth living",
-              writer:"Socrates", src:'q.jpg'},
+              writer:"Socrates", photo:'socrates.jpg'},
               {quote:"I think therefore I am",
-              writer:"Decartes", src:'q.jpg'},
+              writer:"Decartes", photo:'descartes.jpg'},
               {quote:"If God did not exist, it would be necessary to invent Him",
-              writer:"Voltaire", src:'q.jpg'},
+              writer:"Voltaire", photo:'voltaire.jpg'},
               {quote:"We are what we repeatedly do. Excellence, then, is not an act, but a habit",
-              writer:"Aristole", src:'q.jpg'},
+              writer:"Aristole", photo:'aristole.jpg'},
               {quote:"You can discover more about a person in an hour of play than in a year of conversation"
-              ,writer:"Plato", src:'q.jpg'}]
+              ,writer:"Plato", photo:'plato.jpg'}]
 
 //Function to randomly select a quote randomly
 function getRandomQuote () {
@@ -31,22 +31,23 @@ function getRandomQuote () {
                 
                 if(radioValue===quotes[i].writer){
                 // if the right answer is picked
-           alert("Yeeeyyy !! you gessed it")
+           alert("as samouha say : Yeeeyyy !! you gessed it")
         //     we clear the #h
                 $('#h').empty()
                 // so we can append a new quote to it
                 getRandomQuote()
                  }
                 else{
-                    alert("you may click on the help button to guess the writer")
                     // we remouve the img so we then don t append to #h on each click
                     $(".h1").remove()
                     // if we click on help we show the img of the writer in #h
                     $('.v2').on('click',function(){ $('#h').append(`<img class="h1" src=${quotes[1].src} style="width:200px;height:150px">`)})
+
+                    //
                 }
             }
            }
-        });
+        })
        
     })
    

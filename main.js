@@ -15,13 +15,15 @@ var quotes = [{quote:"The unexamined life is not worth living",
 function guess(){
     $("#g").hide()
     $("#bg").hide()
-    console.log(timer);
-    var timer =  new Timer();
-    timer.start();
-    
-    timer.addEventListener('secondsUpdated', function (e) {
-        $('#basicUsage').html(timer.getTimeValues().toString());
-    });
+    // way to display the incrimentation of the timer
+   // var Timer = new easytimer.Timer();
+    //console.log(Timer);
+
+    //Timer.start();
+    //setTimeout
+    //Timer.addEventListener('secondsUpdated', function (e) {
+     //   $('#basicUsage').html(Timer.getTimeValues().toString());
+   // });
     
 }
 

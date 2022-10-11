@@ -1,4 +1,6 @@
 var score=0,counter=0
+// var Timer =  easytimer.Timer();
+
 //Object Array to hold quotes, writer and there image
 var quotes = [{quote:"The unexamined life is not worth living",
               writer:"Socrates", photo:'socrates.jpg'},
@@ -10,15 +12,31 @@ var quotes = [{quote:"The unexamined life is not worth living",
               writer:"Aristole", photo:'aristole.jpg'},
               {quote:"You can discover more about a person in an hour of play than in a year of conversation"
               ,writer:"Plato", photo:'plato.jpg'}]
-
-//Function to randomly select a quote randomly
-function getRandomQuote () {
-	return $('#h').append("<h3 class='a'>"+ quotes[Math.floor(Math.random() * (quotes.length))].quote+"</h3>")
+function guess(){
+    $("#g").hide()
+    $("#bg").hide()
+    console.log(timer);
+    var timer =  new Timer();
+    timer.start();
+    
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#basicUsage').html(timer.getTimeValues().toString());
+    });
+    
 }
-//
+
+
+//Function to randomly select a quote
+var randomNumber =0 // variable to stor the random number
+function getRandomQuote () {
+    randomNumber = Math.floor(Math.random() * (quotes.length))
+	return $('#h').append("<h3 class='a'>"+ quotes[randomNumber].quote+"</h3>")
+}
+
    getRandomQuote()// the function start automaticly
-//    style for what we just append to the #h
-    $("#h").css('border','thick double #FF766C')
+    $("#h").css('border','thick double #FF766C')// style for what we just append to the #h
+    $("#maDivision").css('border','thick double black')
+
 // function so we can know if we answerd corectly or not while we press on the radio
     $(document).ready(function(){
         // while on click on the radio we invoque the function
@@ -28,29 +46,33 @@ function getRandomQuote () {
            for (var i=0;i<quotes.length;i++){
             // while the  .a ,=== to the element on my quotes  so we can keep the curent element on the same index to know the corecft answer
             if($('.a').html()===quotes[i].quote){
-                
-                if(radioValue===quotes[i].writer){
-                // if the right answer is picked
-           alert("as samouha say : Yeeeyyy !! you gessed it")
-        //     we clear the #h
-                $('#h').empty()
+                    if(radioValue===quotes[i].writer){
+                        score++
+                        console.log(score)
+                     alert("as samouha say : Yeeeyyy !! you gessed it")// if the right answer is picked
+                //     we clear the #h
+                       $('#h').empty()
                 // so we can append a new quote to it
                 getRandomQuote()
-                 }
-                else{
-                    // we remouve the img so we then don t append to #h on each click
-                    $(".h1").remove()
-                    // if we click on help we show the img of the writer in #h
-                    $('.v2').on('click',function(){ $('#h').append(`<img class="h1" src=${quotes[1].src} style="width:200px;height:150px">`)})
-
-                    //
-                }
+                 } 
             }
            }
         })
        
     })
-   
+
+        // if we click on help we show the img of the writer in #h
+        $('#v2').on('click',function(){ 
+            for(var i=0;i<quotes.length;i++){
+                if(quotes[i].writer === quotes[randomNumber].writer){
+                        var image=quotes[i].photo
+                        $('#h').append(`<img class="h1" src=${image} style="width:200px;height:150px">`)
+                }
+            }
+            
+        })
+             
+        
 
   
 
